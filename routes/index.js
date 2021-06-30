@@ -1,5 +1,5 @@
 const router = require(`express`).Router();
-// const Product = require('./product');
+const Product = require('./product');
 const { User } = require(`../models`);
 const { compareHash } = require('../helpers/bcrypt');
 const jwt = require('jsonwebtoken');
@@ -9,7 +9,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 
 router.get('/', (req, res) => res.send('OK'));
 
-// router.use('/products', Product);
+router.use('/products', Product);
 
 // router.post('/register', (req, res, next) => {
 //   User.create(req.body)
