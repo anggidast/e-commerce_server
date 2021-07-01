@@ -13,8 +13,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "user1@mail.com",
-  "password": "password1"
+  "email": "admin@mail.com",
+  "password": "admin1"
 }
 
 ### POST /login 2
@@ -39,9 +39,9 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIzNDcxN
 
 
 ### GET /tasks
-GET http://localhost:3000/tasks
+GET http://localhost:3000/products
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIzNzY3ODQyfQ.mOBeWhf4OHRv82lSvpTaDtTBfnI50SVLNJny8HHWhj0
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1MDY2OTE2fQ.BtIulvgbBySbsboeEnV9o0rTvsg4j-FI9cwTkAt81mg
 
 
 ### GET /tasks/:id

@@ -2,6 +2,8 @@ const errorHandler = (err, req, res, next) => {
   let statusCode;
   let errorMsg;
 
+  console.log(err);
+
   switch (err.name) {
     case 'JsonWebTokenError':
     case 'TokenMissing':
