@@ -1,119 +1,19 @@
-# Kanban API Documentation
+# Ecommerce API Documentation
 
-| Method | Route      | Description                               |
-| :----- | :--------- | :---------------------------------------- |
-| POST   | /register  | Create new user account to access Kanban  |
-| POST   | /login     | User login to access Kanban               |
-| POST   | /tasks     | Add new task to Kanban                    |
-| GET    | /tasks     | Show all tasks in Kanban                  |
-| GET    | /tasks/:id | Show task in Kanban by ID                 |
-| PUT    | /tasks/:id | Update all task field in Kanban           |
-| PATCH  | /tasks/:id | Update only task category field in Kanban |
-| DELETE | /tasks/:id | Delete task from Kanban                   |
-
----
-
-## Register
-
-Create new user account to access Kanban
-
-- **URL**
-
-  `/register`
-
-- **Method:**
-
-  `POST`
-
-- **URL Params**: none
-
-- **Data Params**: none
-
-- **Request Body**
-
-  ````json
-    {
-      "email": "<user email>",
-      "password": "<user password>"
-    }
-    ```
-
-  ````
-
-- **Success Response:**
-
-  - **Code:** 201 <br />
-    **Content:**
-    ```json
-    {
-      "success": true,
-      "user": {
-        "id": "<user ID>",
-        "email": "<user email>"
-      }
-    },
-    ```
-
-- **Error Response:**
-
-  - **Code:** 400 BAD REQUEST <br />
-    **Content:** `"message": "email <user email> is already registered"`
-
-    OR
-
-  - **Code:** 400 BAD REQUEST <br />
-    **Content:** `"message": "email cannot be empty/null"`
-
-    OR
-
-  - **Code:** 400 BAD REQUEST <br />
-    **Content:** `"message": "email format is wrong"`
-
-    OR
-
-  - **Code:** 400 BAD REQUEST <br />
-    **Content:** `"message": "password cannot be empty/null"`
-
-    OR
-
-  - **Code:** 400 BAD REQUEST <br />
-    **Content:** `"message": "password minimum character is 6"`
-
-    OR
-
-  - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error`
-
-- **Sample Call:**
-
-  Request body:
-
-  ```json
-  {
-    "email": "user1@mail.com",
-    "password": "password1"
-  }
-  ```
-
-  Response:
-
-  ```json
-  {
-    "success": true,
-    "user": {
-      "id": 14,
-      "email": "user1"
-    }
-  }
-  ```
-
-- **Notes:** none
+| Method | Route         | Description                            |
+| :----- | :------------ | :------------------------------------- |
+| POST   | /login        | User login to access E-Commerce        |
+| POST   | /products     | Add new product to E-Commerce          |
+| GET    | /products     | Show all products in E-Commerce        |
+| GET    | /products/:id | Show product in E-Commerce by ID       |
+| PUT    | /products/:id | Update all product field in E-Commerce |
+| DELETE | /products/:id | Delete product from E-Commerce         |
 
 ---
 
 ## Login
 
-Login to access Kanban
+Login to access E-Commerce
 
 - **URL**
 
@@ -188,13 +88,13 @@ Login to access Kanban
 
 ---
 
-## Add Task
+## Add Product
 
-Add new task to Kanban
+Add new product to E-Commerce
 
 - **URL**
 
-  `/tasks`
+  `/products`
 
 - **Method:**
 
@@ -208,8 +108,10 @@ Add new task to Kanban
 
   ````json
     {
-      "title": "<task title>",
-      "category": "<task category>"
+      "name": "<product name>",
+      "image_url": "<product image URL>",
+      "price": "<product price>",
+      "stock": "<product stock>"
     }
     ```
 
@@ -225,13 +127,12 @@ Add new task to Kanban
       "data":
         {
           "id": "<id number>",
-          "title": "<task title>",
-          "category": "<task category: backlog/todo/doing/done>",
+          "name": "<product name>",
+          "image_url": "<product image URL>",
+          "price": "<product price>",
+          "stock": "<product stock>",
           "createdAt": "2021-05-24T15:01:21.735Z",
           "updatedAt": "2021-05-24T15:01:21.735Z",
-          "User": {
-            "email": "<user email>"
-          }
         }
     },
     ```
@@ -252,8 +153,10 @@ Add new task to Kanban
 
   ```json
   {
-    "title": "Make kanban server",
-    "category": "backlog"
+    "name": "<product name>",
+    "image_url": "<product image URL>",
+    "price": "<product price>",
+    "stock": "<product stock>"
   }
   ```
 
@@ -261,13 +164,15 @@ Add new task to Kanban
 
   ```json
   {
-    "id": 1,
-    "title": "Make kanban server",
-    "category": "backlog",
-    "createdAt": "2021-05-24T15:01:21.735Z",
-    "updatedAt": "2021-05-24T15:01:21.735Z",
-    "User": {
-      "email": "user1@mail.com"
+    "message": "created",
+    "data": {
+      "id": 2,
+      "name": "Jacket",
+      "image_url": "https://images.unsplash.com/photo-1624930199388-580d52e8106e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      "price": 850000,
+      "stock": 11,
+      "updatedAt": "2021-07-01T16:06:34.845Z",
+      "createdAt": "2021-07-01T16:06:34.845Z"
     }
   }
   ```
@@ -276,13 +181,13 @@ Add new task to Kanban
 
 ---
 
-## Show All tasks
+## Show All products
 
-Show all tasks in Kanban
+Show all products in E-Commerce
 
 - **URL**
 
-  `/tasks`
+  `/products`
 
 - **Method:**
 
@@ -300,23 +205,21 @@ Show all tasks in Kanban
     [
       {
         "id": "<id number>",
-        "title": "<task title>",
-        "category": "<task category: backlog/todo/doing/done>",
+        "name": "<product name>",
+        "image_url": "<product image URL>",
+        "price": "<product price>",
+        "stock": "<product stock>",
         "createdAt": "2021-05-24T15:01:21.735Z",
-        "updatedAt": "2021-05-24T15:01:21.735Z",
-        "User": {
-          "email": "<user email>"
-        }
+        "updatedAt": "2021-05-24T15:01:21.735Z"
       },
       {
         "id": "<id number>",
-        "title": "<task title>",
-        "category": "<task category: backlog/todo/doing/done>",
+        "name": "<product name>",
+        "image_url": "<product image URL>",
+        "price": "<product price>",
+        "stock": "<product stock>",
         "createdAt": "2021-05-24T15:01:21.735Z",
-        "updatedAt": "2021-05-24T15:01:21.735Z",
-        "User": {
-          "email": "<user email>"
-        }
+        "updatedAt": "2021-05-24T15:01:21.735Z"
       }
     ]
     ```
@@ -335,13 +238,13 @@ Show all tasks in Kanban
 
 ---
 
-## Show task by ID
+## Show product by ID
 
-Show task in Kanban by ID
+Show product in E-Commerce by ID
 
 - **URL**
 
-  `/tasks/:id`
+  `/products/:id`
 
 - **Method:**
 
@@ -364,8 +267,10 @@ Show task in Kanban by ID
     ```json
     {
       "id": "<id number>",
-      "title": "<task title>",
-      "category": "<task category: backlog/todo/doing/done>",
+      "name": "<product name>",
+      "image_url": "<product image URL>",
+      "price": "<product price>",
+      "stock": "<product stock>",
       "createdAt": "2021-05-24T15:01:21.735Z",
       "updatedAt": "2021-05-24T15:01:21.735Z"
     }
@@ -379,7 +284,7 @@ Show task in Kanban by ID
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "task not found"`
+    **Content:** `"message": "product not found"`
 
     OR
 
@@ -390,13 +295,13 @@ Show task in Kanban by ID
 
 ---
 
-## Update task
+## Update product
 
-Update all task field in Kanban
+Update all product field in E-Commerce
 
 - **URL**
 
-  `/tasks/:id`
+  `/products/:id`
 
 - **Method:**
 
@@ -416,8 +321,10 @@ Update all task field in Kanban
 
   ````json
     {
-      "title": "<task title>",
-      "category": "<task category: backlog/todo/doing/done>"
+      "name": "<product name>",
+      "image_url": "<product image URL>",
+      "price": "<product price>",
+      "stock": "<product stock>",
     }
     ```
 
@@ -430,8 +337,10 @@ Update all task field in Kanban
     ```json
     {
       "id": "<id number>",
-      "title": "<task title>",
-      "category": "<task category: backlog/todo/doing/done>",
+      "name": "<product name>",
+      "image_url": "<product image URL>",
+      "price": "<product price>",
+      "stock": "<product stock>",
       "createdAt": "2021-05-24T15:01:21.735Z",
       "updatedAt": "2021-05-24T15:01:21.735Z"
     }
@@ -450,7 +359,7 @@ Update all task field in Kanban
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "task not found"`
+    **Content:** `"message": "product not found"`
 
     OR
 
@@ -461,83 +370,13 @@ Update all task field in Kanban
 
 ---
 
-## Update task Status
+## Delete product
 
-Update only task status field in Kanban
-
-- **URL**
-
-  `/tasks/:id`
-
-- **Method:**
-
-  `PATCH`
-
-- **URL Params**
-
-  `/:id`
-
-  **Required:**
-
-  `id=[integer]`
-
-- **Data Params**: none
-
-- **Request Body**
-
-  ````json
-    {
-      "category": "<task category: backlog/todo/doing/done>"
-    }
-    ```
-
-  ````
-
-- **Success Response:**
-
-  - **Code:** 200 <br />
-    **Content:**
-    ```json
-    {
-      "id": "<id number>",
-      "title": "<task title>",
-      "category": "<task category: backlog/todo/doing/done>",
-      "createdAt": "2021-05-24T15:01:21.735Z",
-      "updatedAt": "2021-05-24T15:01:21.735Z"
-    }
-    ```
-
-- **Error Response:**
-
-  - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
-
-    OR
-
-  - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "user unauthorized"`
-
-    OR
-
-  - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "task not found"`
-
-    OR
-
-  - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error"`
-
-- **Notes:** none
-
----
-
-## Delete task
-
-Delete task from Kanban
+Delete product from E-Commerce
 
 - **URL**
 
-  `/tasks/:id`
+  `/products/:id`
 
 - **Method:**
 
@@ -562,8 +401,10 @@ Delete task from Kanban
       "message": "deleted",
       "deletedData": {
         "id": "<id number>",
-        "title": "<task title>",
-        "category": "<task category: backlog/todo/doing/done>",
+        "name": "<product name>",
+        "image_url": "<product image URL>",
+        "price": "<product price>",
+        "stock": "<product stock>",
         "createdAt": "2021-05-24T15:01:21.735Z",
         "updatedAt": "2021-05-24T15:01:21.735Z"
       }
@@ -583,7 +424,7 @@ Delete task from Kanban
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "task not found"`
+    **Content:** `"message": "product not found"`
 
     OR
 

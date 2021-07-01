@@ -5,25 +5,11 @@ const { Product, User } = require('../models');
 // app level middleware
 router.use(authentication);
 
-// router.post('/', (req, res, next) => {
-//   const { title, category } = req.body;
-//   Task.create({
-//     title,
-//     category,
-//     UserId: req.userId,
-//   })
-//     .then((result) =>
-//       Task.findOne({
-//         where: result.id,
-//         include: {
-//           model: User,
-//           attributes: ['email'],
-//         },
-//       })
-//     )
-//     .then((result) => res.status(201).json({ message: 'created', data: result }))
-//     .catch((err) => next(err));
-// });
+router.post('/', (req, res, next) => {
+  Product.create(req.body)
+    .then((result) => res.status(201).json({ message: 'created', data: result }))
+    .catch((err) => next(err));
+});
 
 router.get('/', (req, res, next) => {
   Product.findAll()
@@ -34,57 +20,46 @@ router.get('/', (req, res, next) => {
 });
 
 // router level middleware
-// router.get('/:id', (req, res, next) => {
-//   const { id } = req.params;
-//   Task.findOne({ where: { id } })
-//     .then((task) => {
-//       if (!task) {
-//         throw {
-//           name: 'NotFound',
-//           message: 'task not found',
-//         };
-//       }
-//       res.status(200).json({ success: true, data: task });
-//     })
-//     .catch((err) => next(err));
-// });
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Product.findOne({ where: { id } })
+    .then((product) => {
+      if (!product) {
+        throw {
+          name: 'NotFound',
+          message: 'product not found',
+        };
+      }
+      res.status(200).json({ success: true, data: product });
+    })
+    .catch((err) => next(err));
+});
 
-// router.put('/:id', tasksAuthorization, (req, res, next) => {
-//   const { task } = req;
+router.put('/:id', productsAuthorization, (req, res, next) => {
+  const { product } = req;
 
-//   // instance method sequelize, because we already get the task
-//   Object.keys(req.body).forEach((key) => {
-//     if (task[key]) task[key] = req.body[key];
-//   });
+  // instance method sequelize, because we already get the task
+  Object.keys(req.body).forEach((key) => {
+    if (product[key]) product[key] = req.body[key];
+  });
 
-//   task
-//     .save()
-//     .then((updatedTask) => res.status(200).json({ success: true, data: updatedTask }))
-//     .catch((err) => next(err));
-// });
+  product
+    .save()
+    .then((updatedProduct) => res.status(200).json({ success: true, data: updatedProduct }))
+    .catch((err) => next(err));
+});
 
-// router.patch('/:id', tasksAuthorization, (req, res, next) => {
-//   const { category } = req.body;
-//   const { task } = req;
-
-//   task.category = category;
-//   task
-//     .save()
-//     .then(() => res.status(200).json({ success: true, data: task }))
-//     .catch((err) => next(err));
-// });
-
-// router.delete('/:id', tasksAuthorization, (req, res, next) => {
-//   const { task } = req;
-//   task
-//     .destroy()
-//     .then(() => {
-//       res.status(200).json({
-//         message: 'deleted',
-//         deletedData: req.task,
-//       });
-//     })
-//     .catch((err) => next(err));
-// });
+router.delete('/:id', productsAuthorization, (req, res, next) => {
+  const { product } = req;
+  product
+    .destroy()
+    .then(() => {
+      res.status(200).json({
+        message: 'deleted',
+        deletedData: req.product,
+      });
+    })
+    .catch((err) => next(err));
+});
 
 module.exports = router;

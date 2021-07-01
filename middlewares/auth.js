@@ -30,7 +30,7 @@ const productsAuthorization = (req, res, next) => {
           message: 'product not found',
         };
       }
-      return Product.findOne({ where: { id, UserId: req.userId } });
+      return Product.findOne({ where: { id } });
     })
     .then((product) => {
       if (!product) {

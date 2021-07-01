@@ -109,7 +109,7 @@ describe('GET /products', () => {
     request(app)
       .get('/products')
       .set('Content-Type', 'application/json')
-      .set('access_token', admin_access_token)
+      .set('access_token', cust_access_token)
       .then((response) => {
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data', expect.any(Object));
@@ -123,6 +123,111 @@ describe('GET /products', () => {
       .set('Content-Type', 'application/json')
       .then((response) => {
         expect(response.status).toBe(401);
+        expect(response.body).toHaveProperty('message', expect.any(String));
+        done();
+      });
+  });
+});
+
+describe('POST /products', () => {
+  it('Add new product success with JSON response', function (done) {
+    request(app)
+      .post('/products')
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 11 })
+      .then((response) => {
+        expect(response.status).toBe(201);
+        expect(response.body).toHaveProperty('data', expect.any(Object));
+        done();
+      });
+  });
+
+  it('Should be fail to add product, because access token is not attached', function (done) {
+    request(app)
+      .get('/products')
+      .set('Content-Type', 'application/json')
+      .then((response) => {
+        expect(response.status).toBe(401);
+        expect(response.body).toHaveProperty('message', expect.any(String));
+        done();
+      });
+  });
+});
+
+describe('GET /products/:id', () => {
+  it('Get product by id success with JSON response', function (done) {
+    request(app)
+      .get(`/products/${productId}`)
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .then((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('data', expect.any(Object));
+        done();
+      });
+  });
+
+  it('Should be fail to get product (404/not found), because product with id 200 is not exist', function (done) {
+    request(app)
+      .get('/products/200')
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .then((response) => {
+        expect(response.status).toBe(404);
+        expect(response.body).toHaveProperty('message', expect.any(String));
+        done();
+      });
+  });
+});
+
+describe('PUT /products/:id', () => {
+  it('Edit product by id success with JSON response', function (done) {
+    request(app)
+      .put(`/products/${productId}`)
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 15 })
+      .then((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('data', expect.any(Object));
+        done();
+      });
+  });
+
+  it('Should be fail to edit product (404/not found), because product with id 200 is not exist', function (done) {
+    request(app)
+      .put('/products/200')
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .then((response) => {
+        expect(response.status).toBe(404);
+        expect(response.body).toHaveProperty('message', expect.any(String));
+        done();
+      });
+  });
+});
+
+describe('DELETE /products/:id', () => {
+  it('Delete product by id success with JSON response', function (done) {
+    request(app)
+      .delete(`/products/${productId}`)
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .then((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('message', expect.any(String));
+        done();
+      });
+  });
+
+  it('Should be fail to delete product (404/not found), because product with id 200 is not exist', function (done) {
+    request(app)
+      .delete('/products/200')
+      .set('Content-Type', 'application/json')
+      .set('access_token', cust_access_token)
+      .then((response) => {
+        expect(response.status).toBe(404);
         expect(response.body).toHaveProperty('message', expect.any(String));
         done();
       });
