@@ -68,6 +68,7 @@ beforeAll((done) => {
           'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
         price: 500000,
         stock: 15,
+        category: 'accessories',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -77,6 +78,7 @@ beforeAll((done) => {
           'https://images.unsplash.com/photo-1624930199388-580d52e8106e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
         price: 850000,
         stock: 11,
+        category: 'outer',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -89,6 +91,7 @@ beforeAll((done) => {
     })
     .then((product) => {
       productId = product.id;
+      console.log(productId);
       done();
     });
 });
@@ -135,7 +138,7 @@ describe('POST /products', () => {
       .post('/products')
       .set('Content-Type', 'application/json')
       .set('access_token', cust_access_token)
-      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 11 })
+      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 11, category: 'accessories' })
       .then((response) => {
         expect(response.status).toBe(201);
         expect(response.body).toHaveProperty('data', expect.any(Object));
@@ -186,8 +189,8 @@ describe('PUT /products/:id', () => {
     request(app)
       .put(`/products/${productId}`)
       .set('Content-Type', 'application/json')
-      .set('access_token', cust_access_token)
-      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 15 })
+      .set('access_token', admin_access_token)
+      .send({ name: 'Jacket', image_url: 'https://images.unsplash.com/', price: 850000, stock: 15, category: 'accessories' })
       .then((response) => {
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data', expect.any(Object));
@@ -199,7 +202,7 @@ describe('PUT /products/:id', () => {
     request(app)
       .put('/products/200')
       .set('Content-Type', 'application/json')
-      .set('access_token', cust_access_token)
+      .set('access_token', admin_access_token)
       .then((response) => {
         expect(response.status).toBe(404);
         expect(response.body).toHaveProperty('message', expect.any(String));
@@ -209,11 +212,11 @@ describe('PUT /products/:id', () => {
 });
 
 describe('DELETE /products/:id', () => {
-  it('Delete product by id success with JSON response', function (done) {
+  it.only('Delete product by id success with JSON response', function (done) {
     request(app)
       .delete(`/products/${productId}`)
       .set('Content-Type', 'application/json')
-      .set('access_token', cust_access_token)
+      .set('access_token', admin_access_token)
       .then((response) => {
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('message', expect.any(String));
@@ -225,7 +228,7 @@ describe('DELETE /products/:id', () => {
     request(app)
       .delete('/products/200')
       .set('Content-Type', 'application/json')
-      .set('access_token', cust_access_token)
+      .set('access_token', admin_access_token)
       .then((response) => {
         expect(response.status).toBe(404);
         expect(response.body).toHaveProperty('message', expect.any(String));

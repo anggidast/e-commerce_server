@@ -19,7 +19,7 @@
   "scripts": {
     "setup:dev": "sequelize-cli db:drop&&sequelize-cli db:create&&sequelize-cli db:migrate ",
     "setup:test": "sequelize-cli db:drop --env test&&sequelize-cli db:create --env test&& sequelize-cli db:migrate --env test",
-    "test": "jest --runInBand --forceExit --detectOpenHandles",
+    "test": "jest --runInBand --forceExit --detectOpenHandles --coverage",
     "dev": "nodemon app.js",
     "start": "node app.js"
   },

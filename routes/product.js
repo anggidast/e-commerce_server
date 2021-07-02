@@ -51,6 +51,7 @@ router.put('/:id', productsAuthorization, (req, res, next) => {
 
 router.delete('/:id', productsAuthorization, (req, res, next) => {
   const { product } = req;
+  console.log(product);
   product
     .destroy()
     .then(() => {

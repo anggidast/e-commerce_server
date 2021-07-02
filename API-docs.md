@@ -40,7 +40,7 @@ Login to access E-Commerce
 
 - **Success Response:**
 
-  - **Code:** 201 <br />
+  - **Code:** 200 <br />
     **Content:**
     ```json
     {
@@ -52,17 +52,17 @@ Login to access E-Commerce
 - **Error Response:**
 
   - **Code:** 403 FORBIDDEN <br />
-    **Content:** `"message": "email is not registered"`
+    **Content:** `{"message": "email is not registered"}`
 
   OR
 
   - **Code:** 403 FORBIDDEN <br />
-    **Content:** `"message": "wrong password"`
+    **Content:** `{"message": "wrong password"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error`
+    **Content:** `{"message": "internal server error"}`
 
 - **Sample Call:**
 
@@ -104,6 +104,8 @@ Add new product to E-Commerce
 
 - **Data Params**: none
 
+- **Headers**: `access_token`
+
 - **Request Body**
 
   ````json
@@ -140,12 +142,12 @@ Add new product to E-Commerce
 - **Error Response:**
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error`
+    **Content:** `{"message": "internal server error"}`
 
 - **Sample Call:**
 
@@ -195,6 +197,8 @@ Show all products in E-Commerce
 
 - **URL Params**: none
 
+- **Headers**: `access_token`
+
 - **Data Params**: none
 
 - **Success Response:**
@@ -227,12 +231,12 @@ Show all products in E-Commerce
 - **Error Response:**
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error`
+    **Content:** `{"message": "internal server error"}`
 
 - **Notes:** none
 
@@ -260,6 +264,8 @@ Show product in E-Commerce by ID
 
 - **Data Params**: none
 
+- **Headers**: `access_token`
+
 - **Success Response:**
 
   - **Code:** 200 <br />
@@ -279,17 +285,17 @@ Show product in E-Commerce by ID
 - **Error Response:**
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
 
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "product not found"`
+    **Content:** `{"message": "product not found"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error"`
+    **Content:** `{"message": "internal server error"}`
 
 - **Notes:** none
 
@@ -316,6 +322,8 @@ Update all product field in E-Commerce
   `id=[integer]`
 
 - **Data Params**: none
+
+- **Headers**: `access_token`
 
 - **Request Body**
 
@@ -349,22 +357,22 @@ Update all product field in E-Commerce
 - **Error Response:**
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
 
     OR
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "user unauthorized"`
+    **Content:** `{"message": "user unauthorized"}`
 
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "product not found"`
+    **Content:** `{"message": "product not found"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error"`
+    **Content:** `{"message": "internal server error"}`
 
 - **Notes:** none
 
@@ -392,6 +400,8 @@ Delete product from E-Commerce
 
 - **Data Params**: none
 
+- **Headers**: `access_token`
+
 - **Success Response:**
 
   - **Code:** 200 <br />
@@ -414,21 +424,21 @@ Delete product from E-Commerce
 - **Error Response:**
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "token invalid/missing, please re-login"`
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
 
     OR
 
   - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `"message": "user unauthorized"`
+    **Content:** `{"message": "user unauthorized"}`
 
     OR
 
   - **Code:** 404 NOT FOUND <br />
-    **Content:** `"message": "product not found"`
+    **Content:** `{"message": "product not found"}`
 
     OR
 
   - **Code:** 500 INTERNAL SERVER ERROR <br />
-    **Content:** `"message": "internal server error"`
+    **Content:** `{"message": "internal server error"}`
 
 - **Notes:** none

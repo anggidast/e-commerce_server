@@ -12,7 +12,7 @@ const authentication = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(req.headers.access_token, privateKey);
-    req.userId = decoded.id;
+    req.role = decoded.role;
     next();
   } catch (error) {
     next(error);
@@ -33,14 +33,21 @@ const productsAuthorization = (req, res, next) => {
       return Product.findOne({ where: { id } });
     })
     .then((product) => {
-      if (!product) {
+      if (req.role == 'admin') {
+        if (!product) {
+          throw {
+            name: 'Unauthorized',
+            message: 'user unauthorized',
+          };
+        }
+        req.product = product;
+        next();
+      } else {
         throw {
           name: 'Unauthorized',
           message: 'user unauthorized',
         };
       }
-      req.product = product;
-      next();
     })
     .catch((err) => next(err));
 };

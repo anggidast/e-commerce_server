@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
   "email": "admin@mail.com",
-  "password": "admin1"
+  "password": "1234"
 }
 
 ### POST /login 2
@@ -22,51 +22,53 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "",
-  "password": ""
+  "email": "user1@mail.com",
+  "password": "password1"
 }
 
 
-### POST /tasks
+### POST /products
 POST http://localhost:3000/products
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MTUzNzc3fQ.RcsLzpv_mVaDleF4xgwyBEotq9jFRTAFLeDnOeXKTv8
 
 {
-  "name": "Jacket",
+  "name": "Jacket 2",
   "image_url": "https://images.unsplash.com/photo-1624930199388-580d52e8106e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
   "price": 850000,
-  "stock": 11
+  "stock": 13,
+  "category": "Outer"
 }
 
 
-### GET /tasks
+### GET /products
 GET http://localhost:3000/products
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MTUzNzc3fQ.RcsLzpv_mVaDleF4xgwyBEotq9jFRTAFLeDnOeXKTv8
 
 
-### GET /tasks/:id
-GET http://localhost:3000/products/1
+### GET /products/:id
+GET http://localhost:3000/products/3
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MTUzNzc3fQ.RcsLzpv_mVaDleF4xgwyBEotq9jFRTAFLeDnOeXKTv8
 
 
-### PUT /tasks/:id
+### PUT /products/:id
 PUT http://localhost:3000/products/1
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MTUzNzc3fQ.RcsLzpv_mVaDleF4xgwyBEotq9jFRTAFLeDnOeXKTv8
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MjMwMjYwfQ.2gKsvfh-vxXkJqt4Ztn9OfTAKlW9bU8WL-OyZkAqGpY
 
 {
-  "name": "Jacket",
+  "name": "Jacket 3",
   "image_url": "https://images.unsplash.com/photo-1624930199388-580d52e8106e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
   "price": 850000,
-  "stock": 12
+  "stock": 12,
+  "category": "outer"
 }
 
 
-### PATCH /tasks/:id
-PATCH http://localhost:3000/tasks/4
+### PATCH /products/:id
+PATCH http://localhost:3000/products/4
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIzNDcxNjk1fQ.QIvKNH4Dwex7Zl3CHqYEom7aeooHlVb724597C07zhs
 
@@ -76,6 +78,6 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIzNDcxN
 
 
 ### DELETE /tasks/:id
-DELETE http://localhost:3000/tasks/4
+DELETE http://localhost:3000/products/4
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIzNDcxNjk1fQ.QIvKNH4Dwex7Zl3CHqYEom7aeooHlVb724597C07zhs
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI1MjMwMzY2fQ.l8zNXGTWzvQY54EMYLjO1q5e3P_waSOzf7HeIyGjo5k

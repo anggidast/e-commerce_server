@@ -10,13 +10,13 @@ module.exports = {
       [
         {
           email: 'admin@mail.com',
-          password: bcrypt.hashSync('admin1', salt), // admin1
+          password: bcrypt.hashSync('1234', salt), // admin1
           role: 'admin',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          email: 'user1@gmail.com',
+          email: 'user1@mail.com',
           password: bcrypt.hashSync('password1', salt), // password1
           role: 'customer',
           createdAt: new Date(),
