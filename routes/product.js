@@ -23,7 +23,8 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-let filePath;
+// app level middleware
+router.use(authentication);
 
 router.post('/upload', (req, res, next) => {
   if (!req.files) {
@@ -40,23 +41,15 @@ router.post('/upload', (req, res, next) => {
       return res.status(500).send({ msg: 'Error occured' });
     }
     // returing the response with file path and name
-    filePath = `public/${myFile.name}`;
-    // console.log(filePath);
-    return res.send({ name: myFile.name, path: `/${myFile.name}` });
+    return res.status(200).send({ name: myFile.name, path: `public/${myFile.name}` });
   });
 });
 
-// app level middleware
-router.use(authentication);
-
 router.post('/', (req, res, next) => {
-  const { name, price, stock, category, image_url } = req.body;
-  // const filePath = req.app.locals.path;
-  console.log(filePath);
-  // delete req.app.locals.path;
+  const { name, price, stock, category, image_url, path } = req.body;
   let id;
   cloudinary.uploader.upload(
-    filePath,
+    path,
     function (result) {
       console.log(result);
 
@@ -65,21 +58,16 @@ router.post('/', (req, res, next) => {
         price,
         stock,
         category,
-        image_url,
-        // image_url: `${result.secure_url}`,
+        image_url: `${result.secure_url}`,
       })
         .then((result) => {
-          id = result.data.id;
+          id = result.id;
           res.status(201).json({ message: 'created', data: result });
         })
         .catch((err) => next(err));
     },
     { public_id: id }
   );
-
-  // Product.create(req.body)
-  //   .then((result) => res.status(201).json({ message: 'created', data: result }))
-  //   .catch((err) => next(err));
 });
 
 router.get('/', (req, res, next) => {
