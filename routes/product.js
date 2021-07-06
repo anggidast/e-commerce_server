@@ -1,21 +1,8 @@
 const router = require('express').Router();
 const { authentication, productsAuthorization } = require('../middlewares/auth');
 const { Product, User } = require('../models');
-const path = require('path');
-// const multer = require('multer');
+// const path = require('path');
 const cloudinary = require('cloudinary');
-
-// const storage = multer.diskStorage({
-//   destination: './public/images/',
-//   filename: function(req, file, cb) {
-//     const postId = req.app.locals.postId;
-//     cb(null, file.fieldname + '-' + postId + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({
-//   storage: storage
-// }).single('image');
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
