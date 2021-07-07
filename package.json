@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "engine": {
+  "engines": {
     "node": "14.16.1"
   },
   "description": "e-commerce-server",
