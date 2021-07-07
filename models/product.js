@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      image_url: {
+      image_url1: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -37,18 +37,10 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: 'category cannot be empty/null',
-          },
-          notNull: {
-            msg: 'category cannot be empty/null',
-          },
-        },
-      },
+      image_url2: DataTypes.STRING,
+      image_url3: DataTypes.STRING,
+      image_url4: DataTypes.STRING,
+      image_url5: DataTypes.STRING,
       price: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -70,6 +62,18 @@ module.exports = (sequelize, DataTypes) => {
           },
           notNull: {
             msg: 'stock cannot be empty/null',
+          },
+        },
+      },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: 'category cannot be empty/null',
+          },
+          notNull: {
+            msg: 'category cannot be empty/null',
           },
         },
       },

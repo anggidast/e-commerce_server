@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { authentication, productsAuthorization } = require('../middlewares/auth');
 const { Product, User } = require('../models');
-// const path = require('path');
 const cloudinary = require('cloudinary');
+const fs = require('fs');
+let image_url = [];
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -14,6 +15,10 @@ cloudinary.config({
 router.use(authentication);
 
 router.post('/upload', (req, res, next) => {
+  // console.log(req.query, 'params');
+  if (req.query.index == 0) {
+    image_url = [];
+  }
   if (!req.files) {
     return res.status(500).send({ msg: 'file is not found' });
   }
@@ -28,33 +33,48 @@ router.post('/upload', (req, res, next) => {
       return res.status(500).send({ msg: 'Error occured' });
     }
     // returing the response with file path and name
-    return res.status(200).send({ name: myFile.name, path: `public/${myFile.name}` });
+    const path = `public/${myFile.name}`;
+    cloudinary.uploader.upload(path, function (result) {
+      image_url.push(result.secure_url);
+      if (req.query.lastImage) {
+        return res.status(200).send({ name: myFile.name, image_url });
+      }
+      // fs.rmSync(`${__dirname}/../public/${myFile.name}`);
+      // fs.unlinkSync(`./${path}`);
+    });
   });
 });
 
 router.post('/', (req, res, next) => {
-  const { name, price, stock, category, image_url, path } = req.body;
-  let id;
-  cloudinary.uploader.upload(
-    path,
-    function (result) {
-      console.log(result);
+  const { name, price, stock, category, image_url } = req.body;
+  console.log(image_url);
 
-      Product.create({
-        name,
-        price,
-        stock,
-        category,
-        image_url: `${result.secure_url}`,
-      })
-        .then((result) => {
-          id = result.id;
-          res.status(201).json({ message: 'created', data: result });
-        })
-        .catch((err) => next(err));
-    },
-    { public_id: id }
-  );
+  // let id;
+  // cloudinary.uploader.upload(
+  // path,
+  // function (result) {
+  //   console.log(result);
+
+  Product.create({
+    name,
+    price,
+    stock,
+    category,
+    image_url1: image_url[0],
+    image_url2: image_url[1] || '',
+    image_url3: image_url[2] || '',
+    image_url4: image_url[3] || '',
+    image_url5: image_url[4] || '',
+    // image_url: `${result.secure_url}`,
+  })
+    .then((result) => {
+      id = result.id;
+      res.status(201).json({ message: 'created', data: result });
+    })
+    .catch((err) => next(err));
+  // },
+  // { public_id: id }
+  // );
 });
 
 router.get('/', (req, res, next) => {

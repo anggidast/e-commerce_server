@@ -12,8 +12,20 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      image_url: {
+      image_url1: {
         allowNull: false,
+        type: Sequelize.STRING,
+      },
+      image_url2: {
+        type: Sequelize.STRING,
+      },
+      image_url3: {
+        type: Sequelize.STRING,
+      },
+      image_url4: {
+        type: Sequelize.STRING,
+      },
+      image_url5: {
         type: Sequelize.STRING,
       },
       price: {
@@ -23,6 +35,10 @@ module.exports = {
       stock: {
         allowNull: false,
         type: Sequelize.INTEGER,
+      },
+      category: {
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

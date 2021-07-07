@@ -1,13 +1,14 @@
 # Ecommerce API Documentation
 
-| Method | Route         | Description                            |
-| :----- | :------------ | :------------------------------------- |
-| POST   | /login        | User login to access E-Commerce        |
-| POST   | /products     | Add new product to E-Commerce          |
-| GET    | /products     | Show all products in E-Commerce        |
-| GET    | /products/:id | Show product in E-Commerce by ID       |
-| PUT    | /products/:id | Update all product field in E-Commerce |
-| DELETE | /products/:id | Delete product from E-Commerce         |
+| Method | Route            | Description                            |
+| :----- | :--------------- | :------------------------------------- |
+| POST   | /login           | User login to access E-Commerce        |
+| POST   | /products        | Add new product to E-Commerce          |
+| POST   | /products/upload | Upload image to cloudinary             |
+| GET    | /products        | Show all products in E-Commerce        |
+| GET    | /products/:id    | Show product in E-Commerce by ID       |
+| PUT    | /products/:id    | Update all product field in E-Commerce |
+| DELETE | /products/:id    | Delete product from E-Commerce         |
 
 ---
 
