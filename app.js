@@ -1,4 +1,4 @@
-// if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
@@ -16,6 +16,6 @@ app.use(fileUpload());
 app.use(routes);
 app.use(errorHandler);
 
-// if (process.env.NODE_ENV == 'test') module.exports = app;
-// else app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
-app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
+if (process.env.NODE_ENV == 'test') module.exports = app;
+else app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
+// app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
