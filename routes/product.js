@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { authentication, productsAuthorization } = require('../middlewares/auth');
-const { Product, User } = require('../models');
+const { Product, User, ShoppingCart } = require('../models');
 const cloudinary = require('cloudinary');
 const fs = require('fs');
 let image_url = [];
@@ -15,7 +15,6 @@ cloudinary.config({
 router.use(authentication);
 
 router.post('/upload', (req, res, next) => {
-  // console.log(req.query, 'params');
   if (req.query.index == 0) {
     image_url = [];
   }
@@ -47,13 +46,6 @@ router.post('/upload', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { name, price, stock, category, image_url } = req.body;
-  console.log(image_url);
-
-  // let id;
-  // cloudinary.uploader.upload(
-  // path,
-  // function (result) {
-  //   console.log(result);
 
   Product.create({
     name,
@@ -68,13 +60,9 @@ router.post('/', (req, res, next) => {
     // image_url: `${result.secure_url}`,
   })
     .then((result) => {
-      id = result.id;
       res.status(201).json({ message: 'created', data: result });
     })
     .catch((err) => next(err));
-  // },
-  // { public_id: id }
-  // );
 });
 
 router.get('/', (req, res, next) => {
@@ -117,7 +105,6 @@ router.put('/:id', productsAuthorization, (req, res, next) => {
 
 router.delete('/:id', productsAuthorization, (req, res, next) => {
   const { product } = req;
-  console.log(product);
   product
     .destroy()
     .then(() => {

@@ -9,6 +9,10 @@
 | GET    | /products/:id    | Show product in E-Commerce by ID       |
 | PUT    | /products/:id    | Update all product field in E-Commerce |
 | DELETE | /products/:id    | Delete product from E-Commerce         |
+| POST   | /carts           | Add new product to Shopping Cart       |
+| GET    | /carts           | Show all products in Shopping Cart     |
+| PUT    | /carts/:id       | Update product in Shopping Cart        |
+| DELETE | /carts/:id       | Delete product from Shopping Cart      |
 
 ---
 
@@ -46,6 +50,7 @@ Login to access E-Commerce
     ```json
     {
       "success": true,
+      "id": "<user id>",
       "access_token": "<access token>"
     },
     ```
@@ -71,7 +76,7 @@ Login to access E-Commerce
 
   ```json
   {
-    "email": "user1",
+    "email": "user1@mail.com",
     "password": "password1"
   }
   ```
@@ -81,6 +86,7 @@ Login to access E-Commerce
   ```json
   {
     "success": true,
+    "id": 1,
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIyMjEyMzk5fQ.aWfNArS1JYnNYkDxrIyqFBqWuwxEKfEmFYs65t0bcjs"
   }
   ```
@@ -107,18 +113,22 @@ Add new product to E-Commerce
 
 - **Headers**: `access_token`
 
-- **Request Body**
+- **Request Body**:
 
-  ````json
-    {
-      "name": "<product name>",
-      "image_url": "<product image URL>",
-      "price": "<product price>",
-      "stock": "<product stock>"
-    }
-    ```
-
-  ````
+  ```json
+  {
+    "id": "<product id>",
+    "name": "<product name>",
+    "image_url1": "<product url 1>",
+    "image_url2": "<product url 2>",
+    "image_url3": "<product url 3>",
+    "image_url4": "<product url 4>",
+    "image_url5": "<product url 5>",
+    "price": "<product price>",
+    "stock": "<product stock>",
+    "category": "<product category>"
+  }
+  ```
 
 - **Success Response:**
 
@@ -129,15 +139,20 @@ Add new product to E-Commerce
       "message": created
       "data":
         {
-          "id": "<id number>",
+          "id": "<product id>",
           "name": "<product name>",
-          "image_url": "<product image URL>",
+          "image_url1": "<product url 1>",
+          "image_url2": "<product url 2>",
+          "image_url3": "<product url 3>",
+          "image_url4": "<product url 4>",
+          "image_url5": "<product url 5>",
           "price": "<product price>",
           "stock": "<product stock>",
-          "createdAt": "2021-05-24T15:01:21.735Z",
-          "updatedAt": "2021-05-24T15:01:21.735Z",
+          "category": "<product category>",
+          "createdAt": "<product created time>",
+          "updatedAt": "<product updated time>"
         }
-    },
+    }
     ```
 
 - **Error Response:**
@@ -156,10 +171,15 @@ Add new product to E-Commerce
 
   ```json
   {
-    "name": "<product name>",
-    "image_url": "<product image URL>",
-    "price": "<product price>",
-    "stock": "<product stock>"
+    "name": "Jacket",
+    "image_url1": "https://images.unsplash.com/",
+    "image_url2": "https://images.unsplash.com/",
+    "image_url3": "https://images.unsplash.com/",
+    "image_url4": "https://images.unsplash.com/",
+    "image_url5": "https://images.unsplash.com/",
+    "price": 850000,
+    "stock": 11,
+    "category": "outers"
   }
   ```
 
@@ -171,9 +191,14 @@ Add new product to E-Commerce
     "data": {
       "id": 2,
       "name": "Jacket",
-      "image_url": "https://images.unsplash.com/photo-1624930199388-580d52e8106e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      "image_url1": "https://images.unsplash.com/",
+      "image_url2": "https://images.unsplash.com/",
+      "image_url3": "https://images.unsplash.com/",
+      "image_url4": "https://images.unsplash.com/",
+      "image_url5": "https://images.unsplash.com/",
       "price": 850000,
       "stock": 11,
+      "category": "outers"
       "updatedAt": "2021-07-01T16:06:34.845Z",
       "createdAt": "2021-07-01T16:06:34.845Z"
     }
@@ -209,22 +234,32 @@ Show all products in E-Commerce
     ```json
     [
       {
-        "id": "<id number>",
+        "id": "<product id>",
         "name": "<product name>",
-        "image_url": "<product image URL>",
+        "image_url1": "<product url 1>",
+        "image_url2": "<product url 2>",
+        "image_url3": "<product url 3>",
+        "image_url4": "<product url 4>",
+        "image_url5": "<product url 5>",
         "price": "<product price>",
         "stock": "<product stock>",
-        "createdAt": "2021-05-24T15:01:21.735Z",
-        "updatedAt": "2021-05-24T15:01:21.735Z"
+        "category": "<product category>",
+        "createdAt": "<product created time>",
+        "updatedAt": "<product updated time>"
       },
       {
-        "id": "<id number>",
+        "id": "<product id>",
         "name": "<product name>",
-        "image_url": "<product image URL>",
+        "image_url1": "<product url 1>",
+        "image_url2": "<product url 2>",
+        "image_url3": "<product url 3>",
+        "image_url4": "<product url 4>",
+        "image_url5": "<product url 5>",
         "price": "<product price>",
         "stock": "<product stock>",
-        "createdAt": "2021-05-24T15:01:21.735Z",
-        "updatedAt": "2021-05-24T15:01:21.735Z"
+        "category": "<product category>",
+        "createdAt": "<product created time>",
+        "updatedAt": "<product updated time>"
       }
     ]
     ```
@@ -273,13 +308,18 @@ Show product in E-Commerce by ID
     **Content:**
     ```json
     {
-      "id": "<id number>",
+      "id": "<product id>",
       "name": "<product name>",
-      "image_url": "<product image URL>",
+      "image_url1": "<product url 1>",
+      "image_url2": "<product url 2>",
+      "image_url3": "<product url 3>",
+      "image_url4": "<product url 4>",
+      "image_url5": "<product url 5>",
       "price": "<product price>",
       "stock": "<product stock>",
-      "createdAt": "2021-05-24T15:01:21.735Z",
-      "updatedAt": "2021-05-24T15:01:21.735Z"
+      "category": "<product category>",
+      "createdAt": "<product created time>",
+      "updatedAt": "<product updated time>"
     }
     ```
 
@@ -331,9 +371,9 @@ Update all product field in E-Commerce
   ````json
     {
       "name": "<product name>",
-      "image_url": "<product image URL>",
       "price": "<product price>",
       "stock": "<product stock>",
+      "category": "<product category>",
     }
     ```
 
@@ -345,13 +385,18 @@ Update all product field in E-Commerce
     **Content:**
     ```json
     {
-      "id": "<id number>",
+      "id": "<product id>",
       "name": "<product name>",
-      "image_url": "<product image URL>",
+      "image_url1": "<product url 1>",
+      "image_url2": "<product url 2>",
+      "image_url3": "<product url 3>",
+      "image_url4": "<product url 4>",
+      "image_url5": "<product url 5>",
       "price": "<product price>",
       "stock": "<product stock>",
-      "createdAt": "2021-05-24T15:01:21.735Z",
-      "updatedAt": "2021-05-24T15:01:21.735Z"
+      "category": "<product category>",
+      "createdAt": "<product created time>",
+      "updatedAt": "<product updated time>"
     }
     ```
 
@@ -411,13 +456,18 @@ Delete product from E-Commerce
     {
       "message": "deleted",
       "deletedData": {
-        "id": "<id number>",
+        "id": "<product id>",
         "name": "<product name>",
-        "image_url": "<product image URL>",
+        "image_url1": "<product url 1>",
+        "image_url2": "<product url 2>",
+        "image_url3": "<product url 3>",
+        "image_url4": "<product url 4>",
+        "image_url5": "<product url 5>",
         "price": "<product price>",
         "stock": "<product stock>",
-        "createdAt": "2021-05-24T15:01:21.735Z",
-        "updatedAt": "2021-05-24T15:01:21.735Z"
+        "category": "<product category>",
+        "createdAt": "<product created time>",
+        "updatedAt": "<product updated time>"
       }
     }
     ```
@@ -436,6 +486,316 @@ Delete product from E-Commerce
 
   - **Code:** 404 NOT FOUND <br />
     **Content:** `{"message": "product not found"}`
+
+    OR
+
+  - **Code:** 500 INTERNAL SERVER ERROR <br />
+    **Content:** `{"message": "internal server error"}`
+
+- **Notes:** none
+
+---
+
+## Add Cart
+
+Add new product to Shopping Cart
+
+- **URL**
+
+  `/carts`
+
+- **Method:**
+
+  `POST`
+
+- **URL Params**: none
+
+- **Data Params**: none
+
+- **Headers**: `access_token`
+
+- **Request Body**:
+
+  ```json
+  {
+    "amount": "<product amount>"
+  }
+  ```
+
+- **Success Response:**
+
+  - **Code:** 201 <br />
+    **Content:**
+    ```json
+    {
+      "message": created
+      "data":
+        {
+          "amount": "<product amount>",
+          "ProductId": "<product id>",
+          "UserId": "<user id>",
+          "updatedAt": "<cart updated time>",
+          "createdAt": "<cart updated time>"
+        }
+    }
+    ```
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
+
+    OR
+
+  - **Code:** 500 INTERNAL SERVER ERROR <br />
+    **Content:** `{"message": "internal server error"}`
+
+- **Sample Call:**
+
+  Request body:
+
+  ```json
+  {
+    "amount": "1"
+  }
+  ```
+
+  Response:
+
+  ```json
+  {
+    "message": "created",
+    "data": {
+      "amount": 1,
+      "ProductId": 28,
+      "UserId": 4,
+      "updatedAt": "2021-07-09T17:13:33.907Z",
+      "createdAt": "2021-07-09T17:13:33.907Z"
+    }
+  }
+  ```
+
+- **Notes:** none
+
+---
+
+## Show All carts
+
+Show all products in Shopping Cart
+
+- **URL**
+
+  `/carts`
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**: none
+
+- **Headers**: `access_token`
+
+- **Data Params**: none
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    ```json
+    {
+      "success": true,
+      "data": [
+        {
+          "id": "<cart id>",
+          "amount": "<product amount>",
+          "UserId": "<user id>",
+          "createdAt": "<updated time>",
+          "updatedAt": "<updated time>",
+          "Product": {
+            "id": "<product id>",
+            "name": "<product name>",
+            "image_url1": "<product url 1>",
+            "image_url2": "<product url 2>",
+            "image_url3": "<product url 3>",
+            "image_url4": "<product url 4>",
+            "image_url5": "<product url 5>",
+            "price": "<product price>",
+            "stock": "<product stock>",
+            "category": "<product category>",
+            "createdAt": "<product created time>",
+            "updatedAt": "<product updated time>"
+          }
+        },
+        {
+          "id": "<cart id>",
+          "amount": "<product amount>",
+          "UserId": "<user id>",
+          "createdAt": "<updated time>",
+          "updatedAt": "<updated time>",
+          "Product": {
+            "id": "<product id>",
+            "name": "<product name>",
+            "image_url1": "<product url 1>",
+            "image_url2": "<product url 2>",
+            "image_url3": "<product url 3>",
+            "image_url4": "<product url 4>",
+            "image_url5": "<product url 5>",
+            "price": "<product price>",
+            "stock": "<product stock>",
+            "category": "<product category>",
+            "createdAt": "<product created time>",
+            "updatedAt": "<product updated time>"
+          }
+        }
+      ]
+    }
+    ```
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
+
+    OR
+
+  - **Code:** 500 INTERNAL SERVER ERROR <br />
+    **Content:** `{"message": "internal server error"}`
+
+- **Notes:** none
+
+---
+
+## Update product
+
+Update product field in Shopping Cart
+
+- **URL**
+
+  `/carts/:id`
+
+- **Method:**
+
+  `PUT`
+
+- **URL Params**
+
+  `/:id`
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**: none
+
+- **Headers**: `access_token`
+
+- **Request Body**
+
+  ````json
+    {
+      "amount": "<product amount>",
+    }
+    ```
+
+  ````
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    ```json
+    {
+      "message": created
+      "data":
+        {
+          "amount": "<product amount>",
+          "ProductId": "<product id>",
+          "UserId": "<user id>",
+          "updatedAt": "<cart updated time>",
+          "createdAt": "<cart updated time>"
+        }
+    }
+    ```
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
+
+    OR
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "user unauthorized"}`
+
+    OR
+
+  - **Code:** 404 NOT FOUND <br />
+    **Content:** `{"message": "cart not found"}`
+
+    OR
+
+  - **Code:** 500 INTERNAL SERVER ERROR <br />
+    **Content:** `{"message": "internal server error"}`
+
+- **Notes:** none
+
+---
+
+## Delete product
+
+Delete product from Shopping Cart
+
+- **URL**
+
+  `/carts/:id`
+
+- **Method:**
+
+  `DELETE`
+
+- **URL Params**
+
+  `/:id`
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**: none
+
+- **Headers**: `access_token`
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    ```json
+    {
+      "message": "deleted",
+      "deletedData": {
+        "amount": "<product amount>",
+        "ProductId": "<product id>",
+        "UserId": "<user id>",
+        "updatedAt": "<cart updated time>",
+        "createdAt": "<cart updated time>"
+      }
+    }
+    ```
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "token invalid/missing, please re-login"}`
+
+    OR
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{"message": "user unauthorized"}`
+
+    OR
+
+  - **Code:** 404 NOT FOUND <br />
+    **Content:** `{"message": "cart not found"}`
 
     OR
 

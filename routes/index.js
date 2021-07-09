@@ -1,5 +1,6 @@
 const router = require(`express`).Router();
 const Product = require('./product');
+const Cart = require('./cart');
 const { User } = require(`../models`);
 const { compareHash } = require('../helpers/bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,12 +11,13 @@ const CLIENT_ID = process.env.CLIENT_ID;
 router.get('/', (req, res) => res.send('OK'));
 
 router.use('/products', Product);
+router.use('/carts', Cart);
 
-// router.post('/register', (req, res, next) => {
-//   User.create(req.body)
-//     .then((user) => res.status(201).json({ success: true, user: { id: user.id, email: user.email } }))
-//     .catch((err) => next(err));
-// });
+router.post('/register', (req, res, next) => {
+  User.create(req.body)
+    .then((user) => res.status(201).json({ success: true, user: { id: user.id, email: user.email } }))
+    .catch((err) => next(err));
+});
 
 router.post('/login', (req, res, next) => {
   User.findOne({
@@ -27,7 +29,7 @@ router.post('/login', (req, res, next) => {
       if (user) {
         if (compareHash(req.body.password, user.password)) {
           const access_token = jwt.sign({ id: user.id, role: user.role }, privateKey);
-          res.status(200).json({ success: true, role: user.role, access_token });
+          res.status(200).json({ success: true, id: user.id, role: user.role, access_token });
         } else {
           throw {
             name: 'LoginError',

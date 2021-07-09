@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { hash } = require('../helpers/bcrypt');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -9,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.belongsToMany(models.Product, { through: 'ShoppingCart' });
+      User.hasMany(models.ShoppingCart, { foreignKey: 'UserId' });
     }
   }
   User.init(
@@ -40,23 +43,17 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      role: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            msg: 'role cannot be empty/null',
-          },
-          notNull: {
-            msg: 'role cannot be empty/null',
-          },
-        },
-      },
+      role: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: 'User',
     }
   );
+  User.beforeCreate((user) => {
+    user.email = user.email.toLowerCase();
+    user.password = hash(user.password);
+    user.role = 'customer';
+  });
   return User;
 };
