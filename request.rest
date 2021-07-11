@@ -91,7 +91,7 @@ Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
 
 {
-  "amount": 1
+  "amount": 3
 }
 
 ### GET /carts user1
@@ -107,16 +107,16 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImN1c3Rvb
 
 
 ### DELETE /carts/:id
-DELETE http://localhost:3000/carts/4
+DELETE http://localhost:3000/carts/6
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
 
 
 ### PUT /carts/:id
-PUT http://localhost:3000/carts/1
+PUT http://localhost:3000/carts/7
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ3NzE5fQ.6ODpkxYda_TXVrosXHII5REyU2z5Yz6SHg77KnhW5NA
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
 
 {
-  "amount": 1
+  "amount": 4
 }
