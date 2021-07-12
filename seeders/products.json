@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Uncollar Stripe Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626104965/gzlzjaenbpfxj9xvbukr.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626104966/npijsv2p2hojf3mc9c2c.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626104968/qzxjdqingmtnlnakokqi.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626104970/v3zz9zk5hdtvzgk3zj9e.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626104971/xsqoqw5wixgtysoyvtlt.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Linen Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626104878/gr0fgsnlyrbsu59vsqeh.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626104880/nlrftnrysvoehzpbm87x.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626104882/okwrxpnkywjuohiooqgw.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626104883/ytkwbl626gotpprobxpz.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626104884/chcncfzxqrp8a3v02f39.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Stripe Shirt 1",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105046/iomc2bexoamnr8gp62il.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105048/ran2ud6vei0bdzxwja8n.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105049/b3eqbeenchdqcxgozo1w.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105050/rgipxxpec88fkfdfpj3y.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105052/y3klav5vcpl3efzdx9se.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Easy Care Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105095/antiqc7qhplz27dz9dd0.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105097/w6un4jvdxhehs1phdylw.jpg",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105099/p1lt9shasaksz5hdafzp.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105100/g3lk5r43tmyzfzfndpaq.jpg",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105101/jd9bvcngopjoomgqttbx.jpg",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Stripe Shirt 2",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105136/xqvi02tosh52fhnh1ihc.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105138/iow45wnix3gpgvnkcunx.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105139/oxguujxauumfblyqtrub.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105141/yog8dyovzroxthhnzbnv.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105142/b0n9yprhxxvg7mgqcm4l.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Beach Oversized Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105188/nczitofpbhcmhj94oqkm.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105190/grhx9knsi0n0lpsfvo5i.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105191/hjgy1arhl3hnck4mgokj.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105193/djemx1q6nomv8xfgsjog.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105194/tbfheeebnlojzupdmmyk.webp",
+    "price": 249000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Blue Short Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105236/z3v4gbnptymeiyvfm5h1.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105238/ss6fsxcdb1tigcrvudqy.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105239/ke99hho9frdbrak3zdls.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105241/v883zyvbltc7mxryb3hz.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105242/s7uyakzgzy4uae6cexpb.webp",
+    "price": 249000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Plaid Curl Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105303/htbeccg2bjag17ad8zwl.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105304/qiqwlw1yihqgickyvc10.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105306/ktsadg9ezvssztnisgvr.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105308/yoaolvlsxbqzna0d3lsx.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105310/j5ow23azc304daoceeo2.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Denim Strip Shirt",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105396/sla2a6d2ozlbs99nu1tm.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105398/urjge8cb9j4hdc2e2i4m.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105399/mg8znqngdi80thrq85b7.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105401/cyer0bbfbz0y7jzvucbs.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105402/o3kpw4efs0tpshie1ibo.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Stripe Shirt 3",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105482/twi5iecpw4hlgqqztdwx.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105484/ggeqfd8ydkpghqwjjnr7.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105486/kdgos4qi8evvawb8id6j.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105487/qfbmk9qjmsn57kqhppnh.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105489/bgaesppjopvj8ay1bb6v.webp",
+    "price": 299000,
+    "stock": 50,
+    "category": "Shirts"
+  },
+  {
+    "name": "Line Face Goodie Bag",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105575/n2j3egesk5om1aff8dxg.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105577/qxjaxnypofkppiwkskee.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105579/nuudn4mtlz4liihuykm0.jpg",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 49000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Zip Cap",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105603/sxm1tjgkhszr76komzwy.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105604/zvxkql33h1oqazgruscd.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105606/weanjxxtxqvymul0v7uz.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105607/hvrzsvc6nm9aeuzhjxqm.webp",
+    "image_url5": "",
+    "price": 149000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Padding Glove",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105648/ph5k2fpkccdftulskrvn.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105650/v4qkkv6ggbsfl0geikck.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105651/rkl3rmlyshmsdm0udwnu.webp",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 189000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Packable Poncho",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105695/t5drxavrllq8n6mctek1.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105697/hgs5asvgcw8wgp87jeyh.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105698/c2rm9pijfwksdpagpddp.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105700/clwcdxoaex4uwtgtgryk.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105701/y2xqodbvldcvx1gbzxnu.webp",
+    "price": 199000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Packable Duffle Bag",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105732/dylov4xqtqmwq1flfvfu.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105734/u5o72avqzce7aflswdsh.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105735/qhf8zufi7mi8lllty4ws.webp",
+    "image_url4": "https://res.cloudinary.com/anggidast/image/upload/v1626105736/ahniotspi36cknpbjgzu.webp",
+    "image_url5": "https://res.cloudinary.com/anggidast/image/upload/v1626105738/ykvrmzrljqpk9bezjjzn.webp",
+    "price": 129000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Polar Glove",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105773/r7i6gj4uve9jrjdjdss2.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105774/ysvjignwvbuakzmxe6sk.webp",
+    "image_url3": "",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 99000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Chain Brecelet",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105823/tlfyazb6lyswdaeefuyi.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105824/phxtsufpbbgsvkyn9fwe.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105826/illrjnsps6wgisstxdhn.webp",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 179000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Line Brecelet",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105857/nm49oxqdqtirwd5zicnx.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105859/ccctbpczaydxqdraozz0.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105860/xrcpnu88o1uokazot2om.webp",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 209000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Out Of Date Ring",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105889/rqhzd5gl0xin5tgdzvog.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105890/hbwcofxcew3gul0sfxa7.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105892/xtf2ie1erl68dsoxlezl.webp",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 149000,
+    "stock": 50,
+    "category": "Accessories"
+  },
+  {
+    "name": "Engrave Liontin",
+    "image_url1": "https://res.cloudinary.com/anggidast/image/upload/v1626105927/d0em4mpdvtmsg8jtn4i6.webp",
+    "image_url2": "https://res.cloudinary.com/anggidast/image/upload/v1626105929/esuke2sspgh67qxna18a.webp",
+    "image_url3": "https://res.cloudinary.com/anggidast/image/upload/v1626105930/taackn865jbytwkl5mex.webp",
+    "image_url4": "",
+    "image_url5": "",
+    "price": 279000,
+    "stock": 50,
+    "category": "Accessories"
+  }
+]
