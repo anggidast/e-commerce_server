@@ -15,7 +15,7 @@ router.use('/carts', Cart);
 
 router.post('/register', (req, res, next) => {
   User.create(req.body)
-    .then((user) => res.status(201).json({ success: true, user: { id: user.id, email: user.email } }))
+    .then((user) => res.status(201).json({ success: true, user: { id: user.id, email: user.email, role: user.role } }))
     .catch((err) => next(err));
 });
 
