@@ -86,12 +86,12 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluI
 # CART rest
 
 ### Add cart POST /carts/:id
-POST http://localhost:3000/carts/46
+POST http://localhost:3000/carts/50
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
 
 {
-  "amount": 3
+  "amount": 4
 }
 
 ### GET /carts user1

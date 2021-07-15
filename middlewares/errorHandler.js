@@ -2,7 +2,7 @@ const errorHandler = (err, req, res, next) => {
   let statusCode;
   let errorMsg;
 
-  console.log(err);
+  // console.log(err);
 
   switch (err.name) {
     case 'JsonWebTokenError':
@@ -25,6 +25,10 @@ const errorHandler = (err, req, res, next) => {
     case 'NotFound':
       statusCode = 404;
       errorMsg = err.message;
+      break;
+    case 'SequelizeForeignKeyConstraintError':
+      statusCode = 404;
+      errorMsg = 'product not found';
       break;
     case 'Unauthorized':
       statusCode = 401;

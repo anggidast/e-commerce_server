@@ -1,5 +1,3 @@
 node_modules
 coverage
 .env
-request.rest
-template.env

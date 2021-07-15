@@ -6,29 +6,33 @@ router.use(authentication);
 
 router.post('/:id', (req, res, next) => {
   // let newCart;
-  ShoppingCart.findOne({where: {ProductId: req.params.id, UserId: req.UserId}, attributes: ['id']})
-  .then((product) => {
-    if (product) {
-      return ShoppingCart.increment('amount', {by: req.body.amount, where: {id: product.id}})
-    } else {
-      return ShoppingCart.create({
-        amount: req.body.amount,
-        ProductId: req.params.id,
-        UserId: req.UserId,
-      })
-    }
-  })
-  // ShoppingCart.create({
-  //   amount: req.body.amount,
-  //   ProductId: req.params.id,
-  //   UserId: req.UserId,
-  // })
+  ShoppingCart.findOne({ where: { ProductId: req.params.id, UserId: req.UserId }, attributes: ['id'] })
+    .then((cart) => {
+      if (cart) {
+        return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
+      } else {
+        return ShoppingCart.create({
+          amount: req.body.amount,
+          ProductId: req.params.id,
+          UserId: req.UserId,
+        });
+      }
+    })
+    // ShoppingCart.create({
+    //   amount: req.body.amount,
+    //   ProductId: req.params.id,
+    //   UserId: req.UserId,
+    // })
     // .then((result) => {
     //   newCart = result;
     //   return Product.decrement('stock', { by: result.amount, where: { id: result.ProductId } });
     // })
     .then((newCart) => {
-      res.status(201).json({ message: 'created', data: newCart });
+      if (newCart[0]) {
+        res.status(201).json({ message: 'edited', data: newCart[0][0][0] });
+      } else {
+        res.status(201).json({ message: 'created', data: newCart });
+      }
     })
     .catch((err) => next(err));
 });

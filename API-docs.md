@@ -9,7 +9,7 @@
 | GET    | /products/:id    | Show product in E-Commerce by ID       |
 | PUT    | /products/:id    | Update all product field in E-Commerce |
 | DELETE | /products/:id    | Delete product from E-Commerce         |
-| POST   | /carts           | Add new product to Shopping Cart       |
+| POST   | /carts/:id       | Add new product to Shopping Cart       |
 | GET    | /carts           | Show all products in Shopping Cart     |
 | PUT    | /carts/:id       | Update product in Shopping Cart        |
 | DELETE | /carts/:id       | Delete product from Shopping Cart      |
