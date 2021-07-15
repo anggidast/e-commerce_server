@@ -73,7 +73,6 @@ router.get('/', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-// router level middleware
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Product.findOne({ where: { id } })
@@ -88,6 +87,8 @@ router.get('/:id', (req, res, next) => {
     })
     .catch((err) => next(err));
 });
+
+// router level middleware
 
 router.put('/:id', productsAuthorization, (req, res, next) => {
   const { product } = req;
