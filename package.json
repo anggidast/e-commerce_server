@@ -30,7 +30,7 @@
     "setup:test": "sequelize-cli db:drop --env test&&sequelize-cli db:create --env test&& sequelize-cli db:migrate --env test",
     "test": "jest --runInBand --forceExit --detectOpenHandles --coverage",
     "dev": "NODE_ENV=development npx nodemon app.js",
-    "start": "node app.js"
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
