@@ -6,10 +6,10 @@ router.use(authentication);
 
 router.post('/:id', (req, res, next) => {
   // let newCart;
-  ShoppingCart.findOne({ where: { ProductId: req.params.id, UserId: req.UserId }, attributes: ['id'] })
+  ShoppingCart.findOne({ where: { ProductId: req.params.id, UserId: req.UserId }, attributes: ['id'],  include: {model: Product, attributes: ['stock']} })
     .then((cart) => {
       if (cart) {
-        if (cart.amount + req.body.amount <= cart.Product.stock) {
+        if (req.body.amount <= cart.Product.stock) {
           return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
         } else {
           throw {
@@ -61,13 +61,13 @@ router.delete('/:id', cartsAuthorization, (req, res, next) => {
 
 router.put('/:id', cartsAuthorization, (req, res, next) => {
   const { cart } = req;
-  // const oldAmount = cart.amount;
-  // let updatedProduct;
+  const stock = cart.Product.stock;
 
   Object.keys(req.body).forEach((key) => {
-    if (cart[key]) cart[key] = req.body[key];
+    if (cart[key] && key != 'Product') cart[key] = req.body[key];
   });
-
+  
+  if(req.body.amount <= stock) {
   cart
     .save()
     // .then((result) => {
@@ -78,6 +78,12 @@ router.put('/:id', cartsAuthorization, (req, res, next) => {
       res.status(200).json({ success: true, data: updatedProduct });
     })
     .catch((err) => next(err));
+  } else {
+    throw {
+      name: 'BadRequest',
+      message: 'Shopping cart amount must be less than or equal to stock product',
+    };
+  }
 });
 
 module.exports = router;
