@@ -32,7 +32,7 @@ router.post('/upload', (req, res, next) => {
       return res.status(500).send({ msg: 'Error occured' });
     }
     // returing the response with file path and name
-    const path = `public/${myFile.name}`;
+    const path = `${__dirname}/../public/${myFile.name}`;
     cloudinary.uploader.upload(path, function (result) {
       image_url.push(result.secure_url);
       if (req.query.lastImage) {
@@ -57,7 +57,6 @@ router.post('/', (req, res, next) => {
     image_url3: image_url[2] || '',
     image_url4: image_url[3] || '',
     image_url5: image_url[4] || '',
-    // image_url: `${result.secure_url}`,
   })
     .then((result) => {
       res.status(201).json({ message: 'created', data: result });

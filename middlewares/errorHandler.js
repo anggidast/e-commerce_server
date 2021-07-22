@@ -14,6 +14,7 @@ const errorHandler = (err, req, res, next) => {
       statusCode = 400;
       errorMsg = `email ${req.body.email} is already registered`;
       break;
+    case 'BadRequest':
     case 'SequelizeValidationError':
       statusCode = 400;
       errorMsg = err.errors[0].message || err.message;

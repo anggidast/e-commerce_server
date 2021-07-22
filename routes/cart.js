@@ -9,7 +9,14 @@ router.post('/:id', (req, res, next) => {
   ShoppingCart.findOne({ where: { ProductId: req.params.id, UserId: req.UserId }, attributes: ['id'] })
     .then((cart) => {
       if (cart) {
-        return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
+        if (cart.amount + req.body.amount <= cart.Product.stock) {
+          return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
+        } else {
+          throw {
+            name: 'BadRequest',
+            message: 'Shopping cart amount must be less than or equal to stock product',
+          };
+        }
       } else {
         return ShoppingCart.create({
           amount: req.body.amount,
@@ -18,15 +25,6 @@ router.post('/:id', (req, res, next) => {
         });
       }
     })
-    // ShoppingCart.create({
-    //   amount: req.body.amount,
-    //   ProductId: req.params.id,
-    //   UserId: req.UserId,
-    // })
-    // .then((result) => {
-    //   newCart = result;
-    //   return Product.decrement('stock', { by: result.amount, where: { id: result.ProductId } });
-    // })
     .then((newCart) => {
       if (newCart[0]) {
         res.status(201).json({ message: 'edited', data: newCart[0][0][0] });
