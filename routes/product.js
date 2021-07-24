@@ -25,14 +25,15 @@ router.post('/upload', (req, res, next) => {
   const myFile = req.files.file;
 
   //  mv() method places the file inside public directory
-  myFile.mv(`${__dirname}/../public/${myFile.name}`, function (err) {
+  // myFile.mv(`${__dirname}/../public/${myFile.name}`, function (err) {
+  myFile.mv(`./public/${myFile.name}`, function (err) {
     if (err) {
       console.log(err);
       next(err);
       return res.status(500).send({ msg: 'Error occured' });
     }
     // returing the response with file path and name
-    const path = `${__dirname}/../public/${myFile.name}`;
+    const path = `./public/${myFile.name}`;
     cloudinary.uploader.upload(path, function (result) {
       image_url.push(result.secure_url);
       if (req.query.lastImage) {
