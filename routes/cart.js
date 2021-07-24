@@ -5,17 +5,21 @@ const { Product, User, ShoppingCart } = require('../models');
 router.use(authentication);
 
 router.post('/:id', (req, res, next) => {
-  // let newCart;
-  ShoppingCart.findOne({ where: { ProductId: req.params.id, UserId: req.UserId }, attributes: ['id'],  include: {model: Product, attributes: ['stock']} })
+  ShoppingCart.findOne({
+    where: { ProductId: req.params.id, UserId: req.UserId },
+    attributes: ['id'],
+    include: { model: Product, attributes: ['stock'] },
+  })
     .then((cart) => {
       if (cart) {
-        if (req.body.amount <= cart.Product.stock) {
+        if (cart.amount < cart.Product.stock) {
           return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
         } else {
-          throw {
-            name: 'BadRequest',
-            message: 'Shopping cart amount must be less than or equal to stock product',
-          };
+          res.status(400).json({ message: 'Shopping cart amount must be less than or equal to stock product' });
+          // throw {
+          //   name: 'BadRequest',
+          //   message: 'Shopping cart amount must be less than or equal to stock product',
+          // };
         }
       } else {
         return ShoppingCart.create({
@@ -36,7 +40,11 @@ router.post('/:id', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  ShoppingCart.findAll({ attributes: ['id', 'amount', 'UserId', 'createdAt', 'updatedAt'], include: [Product], where: { UserId: req.UserId } })
+  ShoppingCart.findAll({
+    attributes: ['id', 'amount', 'UserId', 'createdAt', 'updatedAt'],
+    include: [Product],
+    where: { UserId: req.UserId },
+  })
     .then((result) => {
       res.status(200).json({ success: true, data: result });
     })
@@ -64,24 +72,20 @@ router.put('/:id', cartsAuthorization, (req, res, next) => {
   const stock = cart.Product.stock;
 
   Object.keys(req.body).forEach((key) => {
-    if (cart[key] && key != 'Product') cart[key] = req.body[key];
+    if (cart[key]) cart[key] = req.body[key];
   });
-  
-  if(req.body.amount <= stock) {
-  cart
-    .save()
-    // .then((result) => {
-    //   updatedProduct = result;
-    //   return Product.decrement('stock', { by: result.amount - oldAmount, where: { id: result.ProductId } });
-    // })
-    .then((updatedProduct) => {
-      res.status(200).json({ success: true, data: updatedProduct });
-    })
-    .catch((err) => next(err));
+
+  if (cart.amount <= stock && cart.amount > 0) {
+    cart
+      .save()
+      .then((updatedProduct) => {
+        res.status(200).json({ success: true, data: updatedProduct });
+      })
+      .catch((err) => next(err));
   } else {
     throw {
       name: 'BadRequest',
-      message: 'Shopping cart amount must be less than or equal to stock product',
+      message: 'Shopping cart amount must be less than or equal to stock product and can not be zero',
     };
   }
 });

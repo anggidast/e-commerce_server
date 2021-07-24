@@ -64,7 +64,10 @@ const cartsAuthorization = (req, res, next) => {
           message: 'cart not found',
         };
       }
-      return ShoppingCart.findOne({ where: { id, UserId: req.UserId } });
+      return ShoppingCart.findOne({
+        include: { model: Product, attributes: ['stock'] },
+        where: { id, UserId: req.UserId },
+      });
     })
     .then((cart) => {
       if (!cart) {

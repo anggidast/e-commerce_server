@@ -2,7 +2,7 @@ const errorHandler = (err, req, res, next) => {
   let statusCode;
   let errorMsg;
 
-  // console.log(err);
+  console.log(err);
 
   switch (err.name) {
     case 'JsonWebTokenError':
@@ -14,10 +14,13 @@ const errorHandler = (err, req, res, next) => {
       statusCode = 400;
       errorMsg = `email ${req.body.email} is already registered`;
       break;
-    case 'BadRequest':
     case 'SequelizeValidationError':
       statusCode = 400;
       errorMsg = err.errors[0].message || err.message;
+      break;
+    case 'BadRequest':
+      statusCode = 400;
+      errorMsg = err.message;
       break;
     case 'LoginError':
       statusCode = 403;
