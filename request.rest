@@ -88,16 +88,16 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluI
 ### Add cart POST /carts/:id
 POST http://localhost:3000/carts/50
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3MDk5MDMyfQ.c2Xa8GIyLNU0Io54ErJWBK-na2Oq6eKLE8ea492Q7gA
 
 {
-  "amount": 4
+  "amount": 1
 }
 
 ### GET /carts user1
 GET http://localhost:3000/carts
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI1ODQ4Mzc0fQ.g2kW9X__C11GqaBGhMKBGr_OeWeBmHEFIItl0OdfjMM
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3MDk5MDMyfQ.c2Xa8GIyLNU0Io54ErJWBK-na2Oq6eKLE8ea492Q7gA
 
 
 ### GET /carts user2

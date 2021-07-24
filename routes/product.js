@@ -11,6 +11,29 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
+router.get('/', (req, res, next) => {
+  Product.findAll()
+    .then((result) => {
+      res.status(200).json({ success: true, data: result });
+    })
+    .catch((err) => next(err));
+});
+
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Product.findOne({ where: { id } })
+    .then((product) => {
+      if (!product) {
+        throw {
+          name: 'NotFound',
+          message: 'product not found',
+        };
+      }
+      res.status(200).json({ success: true, data: product });
+    })
+    .catch((err) => next(err));
+});
+
 // app level middleware
 router.use(authentication);
 
@@ -61,29 +84,6 @@ router.post('/', (req, res, next) => {
   })
     .then((result) => {
       res.status(201).json({ message: 'created', data: result });
-    })
-    .catch((err) => next(err));
-});
-
-router.get('/', (req, res, next) => {
-  Product.findAll()
-    .then((result) => {
-      res.status(200).json({ success: true, data: result });
-    })
-    .catch((err) => next(err));
-});
-
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  Product.findOne({ where: { id } })
-    .then((product) => {
-      if (!product) {
-        throw {
-          name: 'NotFound',
-          message: 'product not found',
-        };
-      }
-      res.status(200).json({ success: true, data: product });
     })
     .catch((err) => next(err));
 });

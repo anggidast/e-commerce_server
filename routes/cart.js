@@ -15,11 +15,10 @@ router.post('/:id', (req, res, next) => {
         if (cart.amount < cart.Product.stock) {
           return ShoppingCart.increment('amount', { by: req.body.amount, where: { id: cart.id } });
         } else {
-          res.status(400).json({ message: 'Shopping cart amount must be less than or equal to stock product' });
-          // throw {
-          //   name: 'BadRequest',
-          //   message: 'Shopping cart amount must be less than or equal to stock product',
-          // };
+          throw {
+            name: 'BadRequest',
+            message: 'Shopping cart amount must be less than or equal to stock product',
+          };
         }
       } else {
         return ShoppingCart.create({
@@ -55,9 +54,6 @@ router.delete('/:id', cartsAuthorization, (req, res, next) => {
   const { cart } = req;
   cart
     .destroy()
-    // .then(() => {
-    //   return Product.increment('stock', { by: cart.amount, where: { id: cart.ProductId } });
-    // })
     .then(() => {
       res.status(200).json({
         message: 'deleted',

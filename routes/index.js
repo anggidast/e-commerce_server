@@ -5,7 +5,6 @@ const { User } = require(`../models`);
 const { compareHash } = require('../helpers/bcrypt');
 const jwt = require('jsonwebtoken');
 const privateKey = process.env.PRIVATE_KEY;
-const CLIENT_ID = process.env.CLIENT_ID;
 
 router.get('/', (req, res) => res.send('OK'));
 
