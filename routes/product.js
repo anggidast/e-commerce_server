@@ -26,7 +26,7 @@ router.get('/:id', (req, res, next) => {
       if (!product) {
         throw {
           name: 'NotFound',
-          message: 'product not found',
+          message: 'Product not found',
         };
       }
       res.status(200).json({ success: true, data: product });
@@ -42,7 +42,7 @@ router.post('/upload', (req, res, next) => {
     image_url = [];
   }
   if (!req.files) {
-    return res.status(500).send({ msg: 'file is not found' });
+    return res.status(500).send({ message: 'File is not found' });
   }
   // accessing the file
   const myFile = req.files.file;

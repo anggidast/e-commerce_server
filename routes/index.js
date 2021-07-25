@@ -12,7 +12,15 @@ router.use('/products', Product);
 router.use('/carts', Cart);
 
 router.post('/register', (req, res, next) => {
-  User.create(req.body)
+  User.findOne({ where: { email: req.body.email.toLowerCase() } })
+    .then((user) => {
+      if (user) {
+        throw {
+          name: 'SequelizeUniqueConstraintError',
+          message: `Email ${user.email} is already registered`,
+        };
+      } else return User.create(req.body);
+    })
     .then((user) => res.status(201).json({ success: true, user: { id: user.id, email: user.email, role: user.role } }))
     .catch((err) => next(err));
 });
@@ -31,13 +39,13 @@ router.post('/login', (req, res, next) => {
         } else {
           throw {
             name: 'LoginError',
-            message: 'wrong password',
+            message: 'Wrong password',
           };
         }
       } else {
         throw {
           name: 'LoginError',
-          message: 'email is not registered',
+          message: 'Email is not registered',
         };
       }
     })

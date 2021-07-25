@@ -28,7 +28,7 @@ const productsAuthorization = (req, res, next) => {
       if (!product) {
         throw {
           name: 'NotFound',
-          message: 'product not found',
+          message: 'Product not found',
         };
       }
       return Product.findOne({ where: { id } });
@@ -38,7 +38,7 @@ const productsAuthorization = (req, res, next) => {
         if (!product) {
           throw {
             name: 'Unauthorized',
-            message: 'user unauthorized',
+            message: 'User unauthorized',
           };
         }
         req.product = product;
@@ -46,7 +46,7 @@ const productsAuthorization = (req, res, next) => {
       } else {
         throw {
           name: 'Unauthorized',
-          message: 'user unauthorized',
+          message: 'User unauthorized',
         };
       }
     })
@@ -61,7 +61,7 @@ const cartsAuthorization = (req, res, next) => {
       if (!cart) {
         throw {
           name: 'NotFound',
-          message: 'cart not found',
+          message: 'Cart not found',
         };
       }
       return ShoppingCart.findOne({
@@ -73,7 +73,7 @@ const cartsAuthorization = (req, res, next) => {
       if (!cart) {
         throw {
           name: 'Unauthorized',
-          message: 'user unauthorized',
+          message: 'User unauthorized',
         };
       }
       req.cart = cart;

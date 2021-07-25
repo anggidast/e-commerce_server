@@ -8,11 +8,12 @@ const errorHandler = (err, req, res, next) => {
     case 'JsonWebTokenError':
     case 'TokenMissing':
       statusCode = 401;
-      errorMsg = 'token invalid/missing, please re-login';
+      errorMsg = 'Token invalid/missing, please re-login';
       break;
     case 'SequelizeUniqueConstraintError':
       statusCode = 400;
-      errorMsg = `email ${req.body.email} is already registered`;
+      // errorMsg = `Email ${req.body.email} is already registered`;
+      errorMsg = err.message;
       break;
     case 'SequelizeValidationError':
       statusCode = 400;
@@ -32,7 +33,7 @@ const errorHandler = (err, req, res, next) => {
       break;
     case 'SequelizeForeignKeyConstraintError':
       statusCode = 404;
-      errorMsg = 'product not found';
+      errorMsg = 'Product not found';
       break;
     case 'Unauthorized':
       statusCode = 401;
@@ -40,7 +41,7 @@ const errorHandler = (err, req, res, next) => {
       break;
     default:
       statusCode = 500;
-      errorMsg = 'internal server error';
+      errorMsg = 'Internal server error';
       break;
   }
   res.status(statusCode).json({ message: errorMsg });
