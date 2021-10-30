@@ -1,6 +1,7 @@
 const router = require(`express`).Router();
 const Product = require('./product');
 const Cart = require('./cart');
+const Ongkir = require('./ongkir');
 const { User } = require(`../models`);
 const { compareHash } = require('../helpers/bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,6 +11,7 @@ router.get('/', (req, res) => res.send('OK'));
 
 router.use('/products', Product);
 router.use('/carts', Cart);
+router.use('/ongkir', Ongkir);
 
 router.post('/register', (req, res, next) => {
   User.findOne({ where: { email: req.body.email.toLowerCase() } })
