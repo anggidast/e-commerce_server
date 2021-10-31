@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
-// const baseURL =
-//   process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.rajaongkir.com/starter/';
-const baseURL = 'https://api.rajaongkir.com/starter/';
+const baseURL =
+  process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.rajaongkir.com/starter/';
 const { authentication, cartsAuthorization } = require('../middlewares/auth');
 
 // router.use(authentication);
@@ -64,10 +63,11 @@ router.post('/cost', (req, res, next) => {
     headers: {
       key: process.env.ONGKIR_KEY,
     },
-    body: req.body,
+    data: req.body,
   })
     .then((result) => {
-      res.status(200).json(result);
+      // console.log(result.data.rajaongkir.results);
+      res.status(200).json(result.data.rajaongkir.results[0]);
     })
     .catch((err) => {
       next(err);
